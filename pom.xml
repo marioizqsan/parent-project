@@ -1,42 +1,41 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  
-  <groupId>es.capgemini.curso</groupId>
-  <artifactId>parent-proyect</artifactId>
-  <version>1.0.0</version>
-  <packaging>pom</packaging>
-  
-  <modules>
-  	<module>model</module>
-  	<module>service</module>
-  	<module>controller</module>
-  </modules>
-  
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  	<spring.version>4.0.2.RELEASE</spring.version>
-  </properties>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <dependencies>
-    <dependency>
-    	<groupId>org.springframework</groupId>
-    	<artifactId>spring-context</artifactId>
-    	<version>${spring.version}</version>
-	</dependency>
-  </dependencies>
-  
-  <build>
-  	<plugins>
-  	<!-- Compilador maven -->
-  		<plugin>
-  			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-compiler-plugin</artifactId>
-			<version>3.8.0</version>
-			<configuration>
-			<!-- Java 11 -->
-				<release>11</release>
-			</configuration>
-  		</plugin>
-  	</plugins>
-  </build>
+	<groupId>es.capgemini.curso</groupId>
+	<artifactId>parent-proyect</artifactId>
+	<version>1.0.0</version>
+	<packaging>pom</packaging>
+
+	<modules>
+		<module>model</module>
+		<module>service</module>
+		<module>controller</module>
+	</modules>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<spring.version>4.0.2.RELEASE</spring.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<!-- Compilador maven -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.0</version>
+				<!-- <configuration> <release>11</release> </configuration> -->
+			</plugin>
+		</plugins>
+	</build>
 </project>

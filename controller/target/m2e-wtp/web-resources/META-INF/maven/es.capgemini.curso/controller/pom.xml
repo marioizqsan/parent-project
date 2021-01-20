@@ -1,10 +1,78 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>es.capgemini.curso</groupId>
-    <artifactId>parent-proyect</artifactId>
-    <version>1.0.0</version>
-  </parent>
-  <artifactId>controller</artifactId>
-  <packaging>war</packaging>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>es.capgemini.curso</groupId>
+		<artifactId>parent-proyect</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<artifactId>controller</artifactId>
+	<packaging>war</packaging>
+
+	<properties>
+		<servlet.version>3.1.0</servlet.version> <!-- 4.0.0 -->
+		<jstl.version>1.2</jstl.version> <!-- Libería de etiquetas de Java (Java Standard Tags Library) -->
+	</properties>
+
+	<dependencies>
+		<!-- Dependencia a la capa de servicio -->
+		<dependency>
+			<groupId>es.capgemini.curso</groupId>
+			<artifactId>service</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<!-- API SERVLET: https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${servlet.version}</version>
+			<scope>provided</scope><!-- Solo para la compilacion. En ejecucion la 
+				provee el servidor de aplicaciones (Jetty) -->
+		</dependency>
+
+		<!-- API Java Standard Tag Library -->
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>${jstl.version}</version>
+			<scope>provided</scope><!-- Solo para la compilacion. En ejecucion la 
+				provee el servidor de aplicaciones (Jetty) -->
+		</dependency>
+	</dependencies>
+	<build>
+		<finalName>practica-uno</finalName>
+		<plugins>
+			<!-- Generador WAR Maven -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.3.0</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+
+			<!-- Servidor Aplicaciones Web jetty -->
+			<plugin>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>9.2.10.v20150310</version>
+				<configuration>
+					<release>11</release>
+					<webApp>
+						<!-- Path (ID único) de App -->
+						<!-- en este caso es lo mismo que si pongo springmvc-xml -->
+						<contextPath>/${project.build.finalName}</contextPath>
+					</webApp>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
