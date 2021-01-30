@@ -1,43 +1,55 @@
 package es.capgemini.curso.servicio;
 
 import java.util.List;
+import java.util.Optional;
+
+import org.springframework.transaction.annotation.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import es.capgemini.curso.modelo.dao.EquipoDao;
+import es.capgemini.curso.modelo.repository.EquipoRepository;
 import es.capgemini.curso.modelo.entidad.Equipo;
 
 /*
- * Componente para la capa de servicios con dependencia de la capa de acceso a datos (DAO)
+ * Clase de implementacion del servicio
+ * 
+ * Todos los metodos del servicio se ejecutan dentro de una transaccion
  */
 @Service
+@Transactional
 public class EquipoServiceImpl implements EquipoService {
 
-	// Dependencia a la capa del modelo inyectada por el contenedor de Spring
+	// Dependencia al repositorio inyectada por el contenedor de Spring
 	@Autowired
-	private EquipoDao dao;
+	private EquipoRepository repository;
 
 	@Override
 	public void agregarEquipo_Service(Equipo equipo) {
-		dao.agregarEquipo(equipo);
-
+		repository.save(equipo);
+		
 	}
 
 	@Override
-	public void eliminarEquipo_Service(String nombreEquipo) {
-		dao.eliminarEquipo(nombreEquipo);
-
+	public void modificarEquipo_Service(Equipo equipo) {
+		repository.save(equipo);
+		
 	}
 
 	@Override
-	public Equipo obtener_un_equipo_Service(String nombre) {
-		return dao.obtener_un_equipo(nombre);
+	public void eliminarEquipo_Service(Equipo equipo) {
+		repository.delete(equipo);
+		
+	}
+
+	@Override
+	public Equipo obtener_un_equipo_Service(int id) {
+		return repository.findOne(id);
 	}
 
 	@Override
 	public List<Equipo> obtener_todos_los_equipos_Service() {
-		return dao.obtener_todos_los_equipos();
+		return repository.findAll();
 	}
 
 }
