@@ -5,18 +5,13 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import es.capgemini.curso.modelo.entidad.Equipo;
 import es.capgemini.curso.modelo.repository.EquipoRepository;
 
 /*
  * Clase de implementacion del servicio
- * 
- * Todos los metodos del servicio se ejecutan dentro de una transaccion
  */
 @Service
-@Transactional
 public class EquipoServiceImpl implements EquipoService {
 
 	// Dependencia al repositorio inyectada por el contenedor de Spring

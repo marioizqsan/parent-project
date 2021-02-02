@@ -24,6 +24,12 @@
 			<artifactId>service</artifactId>
 			<version>1.0.0</version>
 		</dependency>
+		<!-- Dependencia a la capa del modelo -->
+		<dependency>
+			<groupId>es.capgemini.curso</groupId>
+			<artifactId>model</artifactId>
+			<version>1.0.0</version>
+		</dependency>
 
 		<!-- Spring MVC -->
 		<dependency>

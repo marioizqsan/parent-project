@@ -11,7 +11,7 @@ import javax.persistence.Id;
 public class Equipo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -26,14 +26,22 @@ public class Equipo implements Serializable {
 
 	}
 
-	public Equipo(String nombre, String pais, String ciudad, String estadio, int aforo, int numero_socios) {
-
+	public Equipo(int id, String nombre, String pais, String ciudad, String estadio, int aforo, int numero_socios) {
+		this.id = id;
 		this.nombre = nombre;
 		this.pais = pais;
 		this.ciudad = ciudad;
 		this.estadio = estadio;
 		this.aforo = aforo;
 		this.numero_socios = numero_socios;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getNombre() {
@@ -84,10 +92,14 @@ public class Equipo implements Serializable {
 		this.numero_socios = numero_socios;
 	}
 
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	@Override
 	public String toString() {
-		return "Equipo [nombre=" + nombre + ", pais=" + pais + ", ciudad=" + ciudad + ", estadio=" + estadio
-				+ ", aforo=" + aforo + ", numero_socios=" + numero_socios + "]";
+		return "Equipo [id=" + id + ", nombre=" + nombre + ", pais=" + pais + ", ciudad=" + ciudad + ", estadio="
+				+ estadio + ", aforo=" + aforo + ", numero_socios=" + numero_socios + "]";
 	}
 
 }
