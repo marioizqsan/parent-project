@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,8 +19,6 @@ public class EquipoRestController {
 	@Autowired
 	private EquipoService servicio;
 
-	// @RequestMapping(method = RequestMethod.GET, produces =
-	// MediaType.APPLICATION_JSON_VALUE)
 	@GetMapping(path = "/equipos", produces = "application/json")
 	public List<Equipo> getEquipos() {
 
@@ -34,5 +34,10 @@ public class EquipoRestController {
 
 		return servicio.obtener_todos_los_equipos_Service();
 
+	}
+	
+	@PostMapping(path = "/new", produces = "application/json", consumes = "application/json")
+	public void newEquipo(@RequestBody Equipo equipo) {
+		servicio.agregarEquipo_Service(equipo);
 	}
 }
