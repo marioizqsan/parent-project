@@ -8,10 +8,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Equipo implements Serializable {
+public class Equipo implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -90,10 +89,6 @@ public class Equipo implements Serializable {
 
 	public void setNumero_socios(int numero_socios) {
 		this.numero_socios = numero_socios;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
 	}
 
 	@Override
